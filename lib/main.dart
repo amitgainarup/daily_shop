@@ -110,7 +110,7 @@ class MyApp extends StatelessWidget {
                         width: 100,
                         margin: EdgeInsets.symmetric(
                           vertical: 10,
-                          horizontal: 20,
+                          horizontal: 25,
                         ),
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
@@ -134,7 +134,7 @@ class MyApp extends StatelessWidget {
                           Text(
                             tx.title,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
