@@ -12,8 +12,8 @@ class _UserTrasactionState extends State<UserTrasaction> {
   final List<Transaction> _userTransactions = [
     Transaction(
       id: 't1',
-      title: 'Grocery',
-      amount: 100,
+      title: 'Apple',
+      amount: 1399,
       date: DateTime.now(),
     ),
   ];
