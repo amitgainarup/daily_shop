@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addTx;
   NewTransaction(this.addTx);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
+
   final amountController = TextEditingController();
+
+  void submitData() {
+    final enterTitle = titleController.text;
+    final enterAmount = double.parse(amountController.text);
+    if (enterTitle.isEmpty || enterAmount < 0) {
+      return;
+    }
+    widget.addTx(
+      enterTitle,
+      enterAmount,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 8,
       child: Container(
         padding: EdgeInsets.all(10),
         child: Column(
@@ -20,12 +39,15 @@ class NewTransaction extends StatelessWidget {
                 labelText: 'Product',
               ),
               controller: titleController,
+              onSubmitted: (_) => submitData(),
             ),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Amount',
+                labelText: 'Price',
               ),
               controller: amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitData(),
             ),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
@@ -37,16 +59,7 @@ class NewTransaction extends StatelessWidget {
                   style: BorderStyle.solid,
                 ),
               ),
-              onPressed: () {
-                print(titleController.text);
-                print(amountController.text);
-                addTx(
-                  titleController.text,
-                  double.parse(
-                    amountController.text,
-                  ),
-                );
-              },
+              onPressed: submitData,
               child: Text(
                 'Add Transaction',
               ),
