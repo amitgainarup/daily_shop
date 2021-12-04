@@ -36,7 +36,7 @@ class _NewTransactionState extends State<NewTransaction> {
           children: [
             TextField(
               decoration: InputDecoration(
-                labelText: 'Product',
+                labelText: 'Products',
               ),
               controller: titleController,
               onSubmitted: (_) => submitData(),
